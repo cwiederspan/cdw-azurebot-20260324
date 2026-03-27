@@ -4,7 +4,7 @@
 
 ### Step 1: Setup the Instructions
 
-Add information about the initial prompt you use to seed the copilot-instructions.md file here.
+I want you to create an Azure policy so that if a resource group has a tag called "propogate" with a value of "true", then anytime a child resource gets created in that resource group, you will tag those resources with a tag "propogated" and value of "confirmed". Create this as a json file and save it in the /policy folder - you can create the /policy folder if it doesn't already exist.
 
 ### Step 2: Launch GitHub Copilot
 

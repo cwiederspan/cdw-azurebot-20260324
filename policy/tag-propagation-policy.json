@@ -1,0 +1,33 @@
+{
+  "properties": {
+    "displayName": "Propagate tags from resource group to child resources",
+    "description": "When a resource group has a tag 'propogate' with value 'true', automatically tag child resources with 'propogated' = 'confirmed' using a modify effect.",
+    "mode": "Indexed",
+    "policyType": "Custom",
+    "metadata": {
+      "category": "Tags",
+      "version": "1.0.0"
+    },
+    "policyRule": {
+      "if": {
+        "value": "[resourceGroup().tags['propogate']]",
+        "equals": "true"
+      },
+      "then": {
+        "effect": "modify",
+        "details": {
+          "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+          ],
+          "operations": [
+            {
+              "operation": "addOrReplace",
+              "field": "tags['propogated']",
+              "value": "confirmed"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
