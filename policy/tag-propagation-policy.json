@@ -10,8 +10,16 @@
     },
     "policyRule": {
       "if": {
-        "value": "[resourceGroup().tags['propogate']]",
-        "equals": "true"
+        "allOf": [
+          {
+            "value": "[resourceGroup().tags['propogate']]",
+            "equals": "true"
+          },
+          {
+            "field": "[concat('tags[', 'propogated', ']')]",
+            "notEquals": "confirmed"
+          }
+        ]
       },
       "then": {
         "effect": "modify",
